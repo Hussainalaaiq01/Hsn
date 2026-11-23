@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl"><head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://hsnalaa.goatcounter.com; connect-src https://hsnalaa.goatcounter.com; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'">
+<meta name="referrer" content="no-referrer">
 <link rel="icon" href="favicon.png">
+<script>if(window.top!==window.self){document.documentElement.style.display="none";try{window.top.location=window.self.location}catch(e){}}</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hsn | Portfolio </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -285,8 +288,8 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:2rem 0 7rem
       <p>راسلني وأرد عليك بأقرب وقت.</p>
       <div class="cta">
         <a class="btn gold" href="mailto:hsnalaaaa@gmail.com">البريد الإلكتروني</a>
-        <a class="btn glass ghost" href="https://wa.me/9647805732869">واتساب</a>
-        <a class="btn glass ghost" href="https://www.instagram.com/hsnalaaa/">إنستغرام</a>
+        <a class="btn glass ghost" href="https://wa.me/9647805732869" rel="noopener noreferrer">واتساب</a>
+        <a class="btn glass ghost" href="https://www.instagram.com/hsnalaaa/" rel="noopener noreferrer">إنستغرام</a>
       </div>
     </div>
   </section>
@@ -309,7 +312,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;padding:2rem 0 7rem
     <button class="x" id="mx" aria-label="إغلاق">✕</button>
     <div class="art" id="ma"><i id="mi"></i></div>
     <div class="meta"><small id="mc"></small><h3 id="mt"></h3><p id="md"></p>
-      <a class="btn gold" href="https://wa.me/9647805732869" style="margin-top:1.2rem">اطلب مشروعاً مشابهاً</a>
+      <a class="btn gold" href="https://wa.me/9647805732869" style="margin-top:1.2rem" rel="noopener noreferrer">اطلب مشروعاً مشابهاً</a>
     </div>
   </div>
 </div>
@@ -351,7 +354,7 @@ var modal=document.getElementById('modal'),lastW=null;
 function openM(w){
   lastW=w;var a=w.querySelector('.art');
   document.getElementById('ma').className=a.className;
-  document.getElementById('ma').innerHTML=a.innerHTML;
+  var ma=document.getElementById('ma');ma.textContent='';Array.prototype.forEach.call(a.childNodes,function(n){ma.appendChild(n.cloneNode(true))});
   document.getElementById('mc').textContent=w.querySelector('small').textContent;
   document.getElementById('mt').textContent=w.querySelector('h3').textContent;
   var wp=w.querySelector('p');document.getElementById('md').textContent=wp?wp.textContent:'';
@@ -428,7 +431,7 @@ var ICO={f:'<i>Aa</i>',b:'<svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h1
 var rmodal=document.getElementById('rmodal'),lastR=null;
 function openR(b){
   lastR=b;var c=b.closest('.fitem'),enL=document.documentElement.lang==='en';
-  var th=document.getElementById('rth');th.className='thumb '+b.dataset.g;th.innerHTML=ICO[b.dataset.i];
+  var th=document.getElementById('rth');th.className='thumb '+(/^g[1-6]$/.test(b.dataset.g)?b.dataset.g:'g1');th.innerHTML=Object.prototype.hasOwnProperty.call(ICO,b.dataset.i)?ICO[b.dataset.i]:'';
   var nn=c.querySelector('.n');document.getElementById('rc').textContent=nn?nn.textContent:'';
   document.getElementById('rt').textContent=c.querySelector('h3').textContent;
   document.getElementById('rd').textContent=enL?b.dataset.den:b.dataset.d;
