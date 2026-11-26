@@ -47,7 +47,7 @@
   --o1:rgba(223,194,129,.55); --o2:rgba(223,194,129,.3); --o3:rgba(223,194,129,.42);
   --hl:rgba(255,255,255,.9); --shine:rgba(223,194,129,.35); --grid:rgba(6,8,23,.045); --ring:rgba(223,194,129,.6);
 }
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px);scroll-behavior:smooth;height:auto}
+html{overflow-x:clip;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 92px);scroll-behavior:smooth;height:auto}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:'Cairo',Tahoma,sans-serif;line-height:1.8;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
@@ -63,13 +63,14 @@ a{color:inherit;text-decoration:none}
 
 .hero{position:relative}
 .hero>*:not(.portrait){position:relative;z-index:1}
-.portrait{position:absolute;left:-2%;bottom:0;width:min(44vw,560px);pointer-events:none;z-index:0}
-.portrait::before{content:"";position:absolute;left:50%;top:52%;width:96%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;border:1px solid var(--ring);background:radial-gradient(circle,rgba(223,194,129,.16),transparent 62%)}
-.portrait img{position:relative;display:block;width:100%;height:auto;filter:drop-shadow(0 0 1.5px rgba(223,194,129,.55)) drop-shadow(0 18px 36px rgba(6,8,23,.45));animation:float 9s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-8px)}}
-@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .portrait::before{background:radial-gradient(circle,#060817 0,#060817 55%,transparent 56%);border-color:transparent}}
-:root[data-theme="light"] .portrait::before{background:radial-gradient(circle,#060817 0,#060817 55%,transparent 56%);border-color:transparent}
-@media (max-width:720px){.portrait{position:relative;left:auto;bottom:auto;width:min(86vw,380px);margin:1.6rem auto 0}.portrait img{animation:none}}
+.portrait{--iw:min(50vw,680px);position:absolute;left:max(calc(-1*(100vw - 100%)/2 + 1vw),min(-7%,calc(-1*(100vw - 100%)/2 + 5vw)));bottom:0;width:var(--iw);aspect-ratio:1080/923;pointer-events:none;z-index:0}
+.pdisc{position:absolute;left:15%;bottom:0;width:70%;aspect-ratio:1;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 50% 24%,rgba(223,194,129,.6),rgba(6,8,23,.92) 74%);
+  border:1px solid var(--edge-top);
+  box-shadow:0 0 0 14px rgba(223,194,129,.07),0 0 0 15px rgba(223,194,129,.28),0 30px 80px rgba(6,8,23,.45)}
+.pin{position:absolute;bottom:0;left:-21.43%;width:142.86%;height:auto}
+.ptop{position:absolute;left:0;bottom:0;width:100%;height:auto;clip-path:inset(0 0 46% 0)}
+@media (max-width:720px){.portrait{--iw:min(92vw,440px);position:relative;left:auto;bottom:auto;margin:1.8rem auto 0}}
 /* لمسات خلفية خفيفة: شبكة · حلقات مدارية · نجوم صغيرة */
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 78% 30%,rgba(6,8,23,1),transparent);mask-image:radial-gradient(ellipse 70% 60% at 78% 30%,rgba(6,8,23,1),transparent)}
 .ring{--d:min(46vw,460px);position:absolute;width:var(--d);height:var(--d);left:calc(78% - var(--d)/2);top:calc(32% - var(--d)/2);border:1px solid var(--ring);border-radius:50%;will-change:transform;animation:spin 90s linear infinite}
@@ -304,7 +305,7 @@ body{padding-top:64px}
       <a class="btn gold" href="#works">استعراض الأعمال</a>
       <a class="btn glass ghost" href="#about">عني</a>
     </div>
-    <div class="portrait"><img src="images/portrait.webp" width="960" height="820" alt="حسين علاء" decoding="async" fetchpriority="high"></div>
+    <div class="portrait"><div class="pdisc"><img class="pin" src="images/portrait.webp" alt="حسين علاء" width="1080" height="923" decoding="async" fetchpriority="high"></div><img class="ptop" src="images/portrait.webp" alt="" aria-hidden="true" width="1080" height="923" decoding="async"></div>
   </header>
 
   <section id="services">
