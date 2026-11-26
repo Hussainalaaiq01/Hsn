@@ -64,7 +64,7 @@ a{color:inherit;text-decoration:none}
 
 .hero{position:relative}
 .hero>*:not(.portrait){position:relative;z-index:1}
-.portrait{--iw:min(50vw,680px);position:absolute;left:max(calc(-1*(100vw - 100%)/2 + 1vw),min(-7%,calc(-1*(100vw - 100%)/2 + 5vw)));bottom:0;width:var(--iw);aspect-ratio:1080/923;pointer-events:none;z-index:0}
+.portrait{--iw:min(43vw,590px);position:absolute;left:max(calc(-1*(100vw - 100%)/2 - 2vw),min(-10%,calc(-1*(100vw - 100%)/2 + 2vw)));bottom:0;width:var(--iw);aspect-ratio:1080/923;pointer-events:none;z-index:0}
 .pdisc{position:absolute;left:15%;bottom:0;width:70%;aspect-ratio:1;border-radius:50%;overflow:hidden;
   background:var(--disc);
   border:1px solid var(--edge-top);
@@ -219,8 +219,8 @@ body{padding-top:64px}
 @media (max-width:720px){.about{grid-template-columns:1fr}.hero{min-height:86vh}}
 .fsec{padding-top:0}
 .fbtn{width:100%;display:flex;justify-content:space-between;align-items:center;font:inherit;font-size:1.25rem;font-weight:600;color:var(--text);cursor:pointer;padding:1.1rem 1.6rem;border-radius:999px;text-align:start}
-.fbtn svg{width:22px;height:22px;stroke:var(--acc);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
-.fbtn[aria-expanded="true"] svg{transform:rotate(180deg)}
+.fbtn .chev{width:22px;height:22px;stroke:var(--acc);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s}
+.fbtn[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .fbox[hidden]{display:none}
 .fbox{animation:rise .5s cubic-bezier(.2,.8,.2,1) both}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.2rem;margin-top:1.2rem}
@@ -272,6 +272,26 @@ body{padding-top:64px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 .g2 i,.g4 i{color:#060817;text-shadow:none}
 .g2 svg,.g4 svg{stroke:#060817}
+
+/* الأيقونات */
+.ico{width:1.15em;height:1.15em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn{gap:.55rem}
+.svc .ic,.hb{display:grid;place-items:center;flex:none;color:var(--acc);background:linear-gradient(135deg,rgba(223,194,129,.3),rgba(223,194,129,.08));border:1px solid var(--edge);box-shadow:inset 0 1px 0 var(--hl)}
+.svc .ic{width:52px;height:52px;border-radius:16px;margin-bottom:1.2rem;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.svc .ic .ico{width:24px;height:24px}
+.svc .glass:hover .ic{transform:scale(1.08) rotate(-4deg)}
+.svc .n{position:absolute;top:1.8rem;inset-inline-end:1.8rem;height:52px;display:flex;align-items:center;margin:0}
+#works h2,#workshops h2,#about h2,#contact h2{display:flex;align-items:center;gap:.7rem}
+.hb{width:1.15em;height:1.15em;border-radius:.34em}
+.hb .ico{width:.56em;height:.56em}
+.contact h2{flex-direction:column;justify-content:center;gap:.9rem}
+.fbtn .tw{display:flex;align-items:center;gap:.8rem}
+.fbtn .tw .ico{width:24px;height:24px;color:var(--acc)}
+@media (max-width:720px){
+  .svc .ic{width:40px;height:40px;border-radius:12px;margin-bottom:.55rem}
+  .svc .ic .ico{width:19px;height:19px}
+  .svc .n{top:1rem;inset-inline-end:1.15rem;height:40px;margin:0}
+}
 </style>
 </head>
 <body>
@@ -303,43 +323,43 @@ body{padding-top:64px}
     <h1><span class="gold">حسين علاء</span></h1>
     <p>أؤمن أن التصميم الجيد يشرح نفسه، وأن التسويق الجيد يبدأ بفهم الناس قبل البيع لهم.</p>
     <div class="cta">
-      <a class="btn gold" href="#works">استعراض الأعمال</a>
-      <a class="btn glass ghost" href="#about">عني</a>
+      <a class="btn gold" href="#works"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg><span>استعراض الأعمال</span></a>
+      <a class="btn glass ghost" href="#about"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg><span>عني</span></a>
     </div>
     <div class="portrait"><div class="pdisc"><img class="pin" src="images/portrait.webp" alt="حسين علاء" width="1080" height="923" decoding="async" fetchpriority="high"></div><img class="ptop" src="images/portrait.webp" alt="" aria-hidden="true" width="1080" height="923" decoding="async"></div>
   </header>
 
   <section id="services">
     <div class="svc">
-      <div class="glass"><span class="n">01</span><h3>استراتيجيات</h3><p>تسويق مبني على الأرقام والنتائج، لضمان أعلى عائد استثماري.</p></div>
-      <div class="glass"><span class="n">02</span><h3>إدارة المحتوى</h3><p>صناعة محتوى يليق بجمهورك المستهدف ويحقق تفاعلاً حقيقياً.</p></div>
-      <div class="glass"><span class="n">03</span><h3>التصميم الإعلاني</h3><p>بوستات وحملات إعلانية تخطف الأنظار في الثانية الأولى من التمرير.</p></div>
+      <div class="glass"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"></path><path d="M15 7h6v6"></path></svg></div><span class="n">01</span><h3>استراتيجيات</h3><p>تسويق مبني على الأرقام والنتائج، لضمان أعلى عائد استثماري.</p></div>
+      <div class="glass"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path></svg></div><span class="n">02</span><h3>إدارة المحتوى</h3><p>صناعة محتوى يليق بجمهورك المستهدف ويحقق تفاعلاً حقيقياً.</p></div>
+      <div class="glass"><div class="ic"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l18-5v12L3 14z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg></div><span class="n">03</span><h3>التصميم الإعلاني</h3><p>بوستات وحملات إعلانية تخطف الأنظار في الثانية الأولى من التمرير.</p></div>
     </div>
   </section>
 
   <section id="works">
-    <h2>أعمالي</h2>
+    <h2><span class="hb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="2"></rect><rect x="14" y="3" width="7" height="7" rx="2"></rect><rect x="3" y="14" width="7" height="7" rx="2"></rect><rect x="14" y="14" width="7" height="7" rx="2"></rect></svg></span><span>أعمالي</span></h2>
     <div class="grid"><article class="work glass"><div class="art g1"><img src="images/w-1792656411713-0.jpg" alt="" loading="lazy"></div><div class="meta"><small>سوشيل ميديا</small><h3>تصاميم سوشيل ميديا</h3></div></article><article class="work glass"><div class="art g2"><img src="images/w-1795377149318-0.jpg" alt="" loading="lazy"></div><div class="meta"><small>سوشيل ميديا</small><h3>تصاميم سوشيل ميديا</h3></div></article><article class="work glass"><div class="art g3"><img src="images/w-1795377149318-1.jpg" alt="" loading="lazy"></div><div class="meta"><small>سوشيل ميديا</small><h3>تصاميم سوشيل ميديا</h3></div></article></div>
   </section>
 
   <section id="workshops">
-    <h2>الورش التدريبية</h2>
+    <h2><span class="hb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"></path><path d="M6 11.5V16c0 1.5 3 3 6 3s6-1.5 6-3v-4.5"></path></svg></span><span>الورش التدريبية</span></h2>
     <div class="grid"><article class="work glass" data-btn="احجز مقعدك" data-btn-en="Book your seat"><div class="art g5"><i>خ</i></div><div class="meta"><small>قريباً </small><h3>قريباً </h3></div></article></div>
   </section>
 
   <section id="free" class="fsec">
-    <button class="fbtn glass" id="fb" aria-expanded="false" aria-controls="fbox"><span class="t">موارد مجانية</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+    <button class="fbtn glass" id="fb" aria-expanded="false" aria-controls="fbox"><span class="tw"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"></rect><path d="M12 8v13"></path><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"></path></svg><span class="t">موارد مجانية</span></span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
     <div class="fbox" id="fbox" hidden="">
       <div class="fgrid">
-        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free">تحميل</a><button class="btn glass ghost fdet" data-g="g1" data-i="f" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
-        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free">تحميل</a><button class="btn glass ghost fdet" data-g="g3" data-i="b" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
-        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free">تحميل</a><button class="btn glass ghost fdet" data-g="g6" data-i="p" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
+        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg><span>تحميل</span></a><button class="btn glass ghost fdet" data-g="g1" data-i="f" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
+        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg><span>تحميل</span></a><button class="btn glass ghost fdet" data-g="g3" data-i="b" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
+        <div class="fitem glass"><h3>قريباً</h3><div class="frow"><a class="btn gold" href="#free"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"></path><path d="M7 11l5 5 5-5"></path><path d="M5 20h14"></path></svg><span>تحميل</span></a><button class="btn glass ghost fdet" data-g="g6" data-i="p" data-d="قريباً" data-den="Coming soon">التفاصيل</button></div></div>
       </div>
     </div>
   </section>
 
   <section id="about">
-    <h2>نبذة عني</h2>
+    <h2><span class="hb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1-4 4-6 8-6s7 2 8 6"></path></svg></span><span>نبذة عني</span></h2>
     <div class="about">
       <div class="glass">
         <p>أنا حسين علاء، أخصائي تسويق ومصمم من العراق، أعمل مع أصحاب المشاريع والشركات على بناء هوية بصرية قوية وإيصال رسالتهم بوضوح.</p>
@@ -350,12 +370,12 @@ body{padding-top:64px}
 
   <section id="contact">
     <div class="contact glass">
-      <h2>عندك مشروع؟ خلّينا نشتغل عليه</h2>
+      <h2><span class="hb"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H8l-4 4z"></path></svg></span><span>عندك مشروع؟ خلّينا نشتغل عليه</span></h2>
       <p>راسلني وأرد عليك بأقرب وقت.</p>
       <div class="cta">
-        <a class="btn gold" href="mailto:hsnalaaaa@gmail.com">البريد الإلكتروني</a>
-        <a class="btn glass ghost" href="https://wa.me/9647805732869" rel="noopener noreferrer">واتساب</a>
-        <a class="btn glass ghost" href="https://www.instagram.com/hsnalaaa/" rel="noopener noreferrer">إنستغرام</a>
+        <a class="btn gold" href="mailto:hsnalaaaa@gmail.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg><span>البريد الإلكتروني</span></a>
+        <a class="btn glass ghost" href="https://wa.me/9647805732869" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"></path><path d="M9 9.5c.3 2 2.5 4.2 5 5l1.2-1.2-1.8-1-.8.7c-.8-.4-1.6-1.2-2-2l.7-.8-1-1.8z"></path></svg><span>واتساب</span></a>
+        <a class="btn glass ghost" href="https://www.instagram.com/hsnalaaa/" rel="noopener noreferrer"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"></circle></svg><span>إنستغرام</span></a>
       </div>
     </div>
   </section>
@@ -441,24 +461,24 @@ var EN={
   ".hero h1 .gold":["Hussain Alaa"],
   ".tools .btn":["Let’s talk"],
   ".hero p":["I believe good design explains itself, and good marketing starts by understanding people before selling to them."],
-  ".hero .cta a":["View my work","About me"],
+  ".hero .cta a span":["View my work","About me"],
   ".svc h3":["Strategy","Content management","Advertising design"],
   ".svc p":["Marketing built on numbers and results, to ensure the highest return on investment.","Creating content that suits your target audience and drives real engagement.","Posts and ad campaigns that grab attention in the first second of the scroll."],
-  "#works h2":["My Work"],
-  "#workshops h2":["Training Workshops"],
+  "#works h2 span:last-child":["My Work"],
+  "#workshops h2 span:last-child":["Training Workshops"],
   ".fbtn .t":["Free Resources"],
   ".fitem h3":["Coming soon","Coming soon","Coming soon"],
-  ".fitem a.btn":["Download","Download","Download"],
+  ".fitem a.btn span":["Download","Download","Download"],
   ".fdet":["Details","Details","Details"],
   ".seg button":["All"],
   ".work small":["Social Media","Social Media","Social Media","Coming soon "],
   ".work h3":["Social Media Designs","Social Media Designs","Social Media Designs","Coming soon "],
   ".work p":[],
-  "#about h2":["About me"],
+  "#about h2 span:last-child":["About me"],
   "#about p":["I’m Hussain Alaa, a  Marketing Specialist and designer from Iraq. I work with business owners and companies to build strong visual identities and communicate their message clearly.","I believe good design explains itself, and good marketing starts by understanding people before selling to them."],
-  "#contact h2":["Have a project? Let’s work on it"],
+  "#contact h2 span:last-child":["Have a project? Let’s work on it"],
   "#contact p":["Message me and I’ll reply as soon as possible."],
-  "#contact .cta a":["Email","WhatsApp","Instagram"],
+  "#contact .cta a span":["Email","WhatsApp","Instagram"],
   ".sheet .btn":["Request a similar project"]
 };
 var AR={};
